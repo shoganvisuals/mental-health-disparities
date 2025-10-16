@@ -81,6 +81,7 @@ The scatter plot confirmed a positive correlation (r = 0.45), with rural countie
 Challenges included handling ~20 missing counties, resolved by flagging them for tooltips, and excluding hpsa_score = 0 counties for the scatter plot.
 
 ![R Scatter Plot](images/r_graph.png)
+
 *R-generated scatter plot, "Mental Health HPSA vs. Hospitalization Rates," showing the correlation between HPSA Mental Health Score (x-axis) and Preventable Hospitalization Rate (y-axis), with points colored by Rural_Urban to highlight rural-urban disparities.*
 
 Geospatial: Context with ArcGISI used ArcGIS to source a U.S. county shapefile, ensuring FIPS codes matched the dataset. I verified spatial accuracy in Excel and R, enabling seamless integration with Tableau’s map visualization.
