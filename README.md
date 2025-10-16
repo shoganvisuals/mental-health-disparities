@@ -1,7 +1,5 @@
 Mental Health Provider Shortages: Data Analysis Process
 
-Download Executive Summary
-
 Project Overview: This project analyzed mental health provider shortages and preventable hospitalization rates across U.S. counties, emphasizing rural versus urban disparities. Using BigQuery SQL, R, Excel, ArcGIS, and Tableau Public (version 2024.3), I created an interactive dashboard to visualize these disparities and simulate the impact of improved provider availability. The process involved sourcing trusted data, cleaning and analyzing it, and building a user-friendly visualization.
 
 Data Sourcing: I sourced data from reputable websites to ensure reliability:
@@ -118,3 +116,5 @@ A HPSA_Reduction parameter (0 to 0.5) enabled dynamic updates. Tooltips handled 
 Challenges and Solutions: A tooltip error was resolved by validating calculated fields and Marks card setup. Static hosp_rate was fixed with Adjusted_Hosp_Rate. Excluding hpsa_score = 0 counties in the scatter plot used a filter. The dashboard layout balanced geographic and analytical insights.
 
 Outcome: The dashboard, published on the Tableau Public dashboard, provides an intuitive interface for exploring disparities. This project demonstrates proficiency in SQL, R, Excel, ArcGIS, and Tableau, delivering insights into rural-urban healthcare challenges.
+
+[Download Executive Summary](executive_summary.pdf)
