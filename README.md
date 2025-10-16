@@ -28,7 +28,8 @@ LEFT JOIN healthcare.hpsa h
   ON FORMAT('%05d', SAFE_CAST(r.fips AS INT64)) = FORMAT('%05d', SAFE_CAST(h.fips AS INT64))
 LEFT JOIN healthcare.preventable_hosp p 
   ON FORMAT('%05d', SAFE_CAST(r.fips AS INT64)) = FORMAT('%05d', SAFE_CAST(p.fips AS INT64))
-WHERE r.state NOT IN ('PR', 'VI');```
+WHERE r.state NOT IN ('PR', 'VI');
+```
 
 The query addressed missing values (~20 counties, likely rural) by flagging them for visualization handling. The cleaned dataset was exported as mental_health_r_processed.csv.
 
@@ -67,7 +68,8 @@ ggplot(data, aes(x = hpsa_score, y = hosp_rate, color = Rural_Urban)) +
        y = "Preventable Hospitalization Rate")
 
 ### Export cleaned data
-write.csv(data, "/cloud/project/mental_health_r_processed.csv", row.names = FALSE)```
+write.csv(data, "/cloud/project/mental_health_r_processed.csv", row.names = FALSE)
+```
 
 Sample R output from the correlation test:
 ```R
@@ -80,7 +82,8 @@ alternative hypothesis: true correlation is not equal to 0
  0.35 0.55
 sample estimates:
       cor 
-     0.45```
+     0.45
+```
 
 The scatter plot confirmed a positive correlation (r = 0.45), with rural counties showing higher values. Challenges included handling ~20 missing counties, resolved by flagging them for tooltips, and excluding hpsa_score = 0 counties for the scatter plot.
 
@@ -116,7 +119,8 @@ ELSEIF [Rural_Urban_Filter] = "Urban" THEN "Urban Counties"
 ELSE "All Counties" END
 
 // Dynamic_Subtitle
-"Avg HPSA Score: " + STR(ROUND(AVG(IF [Rural_Urban_Filter] != "All" THEN [Hpsa Score] END),1)) + " | Avg Hospitalization Rate: " + STR(ROUND(AVG(IF [Rural_Urban_Filter] != "All" THEN [Hosp Rate] END),1))```
+"Avg HPSA Score: " + STR(ROUND(AVG(IF [Rural_Urban_Filter] != "All" THEN [Hpsa Score] END),1)) + " | Avg Hospitalization Rate: " + STR(ROUND(AVG(IF [Rural_Urban_Filter] != "All" THEN [Hosp Rate] END),1))
+```
 
 A HPSA_Reduction parameter (0 to 0.5) enabled dynamic updates. Tooltips handled ~20 missing counties with County_Info_Tooltip, using conditional fields (e.g., Hosp_Rate_Tooltip). A Rural_Urban filter toggled views, and the dynamic title and subtitle enhanced user understanding by clearly indicating the data’s scope and key metrics.
 
