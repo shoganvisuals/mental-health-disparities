@@ -1,6 +1,9 @@
 Mental Health Provider Shortages: Data Analysis Process
+
 Download Executive Summary
+
 Project Overview: This project analyzed mental health provider shortages and preventable hospitalization rates across U.S. counties, emphasizing rural versus urban disparities. Using BigQuery SQL, R, Excel, ArcGIS, and Tableau Public (version 2024.3), I created an interactive dashboard to visualize these disparities and simulate the impact of improved provider availability. The process involved sourcing trusted data, cleaning and analyzing it, and building a user-friendly visualization.
+
 Data Sourcing: I sourced data from reputable websites to ensure reliability:
 
 USDA.gov: Provided rural-urban continuum codes (Rural_Urban).
@@ -8,6 +11,7 @@ HRSA.gov: Supplied Health Professional Shortage Area scores (hpsa_score).
 countyhealthrankings.org (University of Wisconsin Population Health Institute): Offered preventable hospitalization rates (hosp_rate).
 
 These sources ensured high-quality data. I searched these sites to identify datasets, downloading or accessing them via APIs, and verified compatibility with FIPS-based county data.
+
 Data Retrieval and Cleaning with BigQuery SQLI used BigQuery SQL to retrieve and clean data from three tables: rucc, hpsa, and preventable_hosp. The following query joined these tables on standardized 5-digit FIPS codes, filtered out non-continental territories, and produced a dataset with fips, county, state, Rural_Urban, hpsa_score, and hosp_rate:
 
 SELECT 
@@ -74,9 +78,13 @@ sample estimates:
       cor 
      0.45 
 
-The scatter plot confirmed a positive correlation (r = 0.45), with rural counties showing higher values. Challenges included handling ~20 missing counties, resolved by flagging them for tooltips, and excluding hpsa_score = 0 counties for the scatter plot.
+The scatter plot confirmed a positive correlation (r = 0.45), with rural counties showing higher values. 
+
+Challenges included handling ~20 missing counties, resolved by flagging them for tooltips, and excluding hpsa_score = 0 counties for the scatter plot.
+
 R-generated scatter plot, "Mental Health HPSA vs. Hospitalization Rates," showing the correlation between HPSA Mental Health Score (x-axis) and Preventable Hospitalization Rate (y-axis), with points colored by Rural_Urban to highlight rural-urban disparities.
-Geospatial Context with ArcGISI used ArcGIS to source a U.S. county shapefile, ensuring FIPS codes matched the dataset. I verified spatial accuracy in Excel and R, enabling seamless integration with Tableau’s map visualization.
+
+Geospatial: Context with ArcGISI used ArcGIS to source a U.S. county shapefile, ensuring FIPS codes matched the dataset. I verified spatial accuracy in Excel and R, enabling seamless integration with Tableau’s map visualization.
 
 Visualization in Tableau Public: Using Tableau Public, I built a dashboard (1280 x 1024 pixels) with:
 
